@@ -1,8 +1,13 @@
-# React + Vite
+# Songle
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Songle is a song guessing game (inspiration taken from LoLdle). First, the lyrics are shown. With every incorrect guess, one category of the song is revealed (Year, Genre, and Artist). You can skip the song if needed. Every correct guess will increment the score. We used Vite. 
 
-Currently, two official plugins are available:
+```
+git clone https://github.com/Masonlin2104/UgaHacks.git
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+cd UgaHacks
+
+npm run dev
+```
+
+Created by Lera Legostaev, Mason Gindlesperger, Mason Lin
