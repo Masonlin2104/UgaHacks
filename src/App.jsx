@@ -16,11 +16,17 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1>LoLdle (Music version hehe)</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+        <form>
+          <label>
+            Guess the Song:
+            <input type="text" name="name" />
+            </label>
+        </form>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
