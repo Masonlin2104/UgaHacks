@@ -58,7 +58,11 @@
 }
 
 .subtitle {
-  color: #D58258;
+  color: #FFFEE9;
+}
+
+h2 {
+  color: #963A2F;
 }
 
 .input-form {
@@ -68,4 +72,8 @@
   background: #FFFEE9;
   border-radius: 10px;
   color: #963A2F;
+}
+
+input {
+  background-color: #FFFFFF;
 }
