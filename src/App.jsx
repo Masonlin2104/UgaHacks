@@ -5,12 +5,7 @@ import musicNote from './assets/musicnote.svg'
 import './App.css'
 import songs from './songs.json'
 
-const getRandomSong = () => {
-  return songs[Math.floor(Math.random() * songs.length)];
-};
-
-//Ping the lyrics api to get the lyrics of the song
-async function getSongLyrics(name,artist) {
+async function getSongLyrics(name, artist) {
   try {
     const response = await fetch(`https://api.lyrics.ovh/v1/${artist}/${name}`);
     const data = await response.json();
@@ -24,6 +19,7 @@ async function getSongLyrics(name,artist) {
 function App() {
   const [score, setScore] = useState(0);
   const [lyrics, setLyrics] = useState('Lyrics');
+  const [fullLyrics, setFullLyrics] = useState(''); // store complete lyrics
   const [genre, setGenre] = useState('Genre');
   const [year, setYear] = useState('Year');
   const [artist, setArtist] = useState('Artist');
@@ -31,28 +27,65 @@ function App() {
   const [message, setMessage] = useState('');
   const [currentSong, setCurrentSong] = useState(null);
   const [incorrectGuesses, setIncorrectGuesses] = useState(0);
+  const [remainingSongs, setRemainingSongs] = useState([...songs]);
+
+  // New getRandomSong helper which also removes the selected song
+  const getRandomSong = () => {
+    if (remainingSongs.length === 0) return null;
+    const index = Math.floor(Math.random() * remainingSongs.length);
+    const selectedSong = remainingSongs[index];
+    const updatedRemaining = [...remainingSongs];
+    updatedRemaining.splice(index, 1);
+    setRemainingSongs(updatedRemaining);
+    return selectedSong;
+  };
+
+  // Helper function to compute how many lines to show
+  const getDisplayedLyrics = (lyrics, incorrectGuesses) => {
+    const lines = lyrics.split('\n');
+    let numberOfLines = 6; // default is 6 lines
+    if (incorrectGuesses >= 3) {
+      // for 3 or more incorrect guesses, add one extra line per guess until a maximum of 10 lines
+      numberOfLines = Math.min(6 + (incorrectGuesses - 2), 10);
+    }
+    return lines.slice(0, numberOfLines).join('\n') + '...';
+  };
 
   useEffect(() => {
     startNewRound();
   }, []);
 
+  // Update displayed lyrics when incorrectGuesses changes
+  useEffect(() => {
+    if (fullLyrics) {
+      setLyrics(getDisplayedLyrics(fullLyrics, incorrectGuesses));
+    }
+  }, [incorrectGuesses]);
+
   const startNewRound = () => {
     const song = getRandomSong();
+    if (!song) {
+      setMessage('No more songs available!');
+      return;
+    }
     setCurrentSong(song);
     const fetchLyrics = async () => {
       let lyrics = await getSongLyrics(song.name, song.artist);
-      if (lyrics === 'No lyrics found') { //If lyrics not found, get a new song
+      if (lyrics === 'No lyrics found') { // If lyrics not found, try another song
         const newSong = getRandomSong();
+        if (!newSong) {
+          setMessage('No more songs available!');
+          return;
+        }
         setCurrentSong(newSong);
         setGenre(newSong.genre);
         setYear(newSong.year);
         setArtist(newSong.artist);
         lyrics = await getSongLyrics(newSong.name, newSong.artist);
       }
-      // Only select the first two lines of the lyrics and add ellipsis at the end
-      const firstTwoLines = lyrics.split('\n').slice(0, 6).join('\n') + '...';
-      
-      setLyrics(firstTwoLines);
+      setFullLyrics(lyrics);
+      const displayedLyrics = getDisplayedLyrics(lyrics, incorrectGuesses);
+      setLyrics(displayedLyrics);
     };
     fetchLyrics();
     setGenre(song.genre);
@@ -63,8 +96,6 @@ function App() {
     setSongName('');
   };
 
-
-
   const handleSongNameChange = (e) => {
     setSongName(e.target.value);
   };
@@ -74,11 +105,11 @@ function App() {
     if (!songName.trim()) {
       return;
     }
-    
+
     if (currentSong && songName.toLowerCase() === currentSong.name.toLowerCase()) {
       setMessage('🎉 Correct! You guessed the song!');
-      setScore(score + 1); // increment score 
-      setTimeout(startNewRound, 3000); // wait 3 seconds before starting a new round
+      setScore(score + 1);
+      setTimeout(startNewRound, 3000);
     } else {
       setMessage('❌ Incorrect. Try again.');
       setIncorrectGuesses(incorrectGuesses + 1);
@@ -87,10 +118,10 @@ function App() {
     setSongName('');
   };
 
-    const handleSkip = () => {
-      setMessage('⏭️ Skipped! Moving to next song...');
-      setTimeout(startNewRound, 1200); // wait 1.2 seconds before switching songs
-    };
+  const handleSkip = () => {
+    setMessage('⏭️ Skipped! Moving to next song...');
+    setTimeout(startNewRound, 1200);
+  };
 
   return (
     <>
