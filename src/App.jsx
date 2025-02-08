@@ -141,7 +141,7 @@ function App() {
         {message && <p className="message">{message}</p>}
       </div>
       <div className="card">
-        <div style={{ display: 'flex', justifyContent: 'space-between' , alignItems: 'flex-start' , gap: '10px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center' , alignItems: 'flex-start' , gap: '50px' }}>
           <div className="category-card">
             <h2>Genre:</h2>
             <p>{incorrectGuesses >= 1 ? genre : '???'}</p>
