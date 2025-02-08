@@ -37,6 +37,29 @@
   padding: 2em;
 }
 
-.read-the-docs {
+.lyrics-card {
+  color: #963A2F;
+  background-color: #FFFEE9;
+  margin: 1px;
+}
+
+.category-card {
+  color: #963A2F;
+  background-color: #FFFEE9;
+  padding-left: 10px;
+  padding-right: 10px;
+
+}
+
+.subtitle {
   color: #888;
+}
+
+.input-form {
+  margin: 50px auto;
+  max-width: 400px;
+  padding: 20px;
+  background: #FFFEE9;
+  border-radius: 10px;
+  color: #963A2F;
 }
