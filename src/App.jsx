@@ -9,6 +9,18 @@ const getRandomSong = () => {
   return songs[Math.floor(Math.random() * songs.length)];
 };
 
+//Ping the lyrics api to get the lyrics of the song
+async function getSongLyrics(name,artist) {
+  try {
+    const response = await fetch(`https://api.lyrics.ovh/v1/${artist}/${name}`);
+    const data = await response.json();
+    return data.lyrics;
+  } catch (error) {
+    console.error(error);
+    return 'Lyrics not found';
+  }
+}
+
 function App() {
   const [count, setCount] = useState(0)
   const [lyrics, setLyrics] = useState('Lyrics')
@@ -23,11 +35,28 @@ function App() {
   useEffect(() => {
     const song = getRandomSong();
     setCurrentSong(song);
-    setLyrics(song.lyrics);
+    const fetchLyrics = async () => {
+      let lyrics = await getSongLyrics(song.name, song.artist);
+      if (lyrics === 'No lyrics found') { //If lyrics not found, get a new song
+        const newSong = getRandomSong();
+        setCurrentSong(newSong);
+        setGenre(newSong.genre);
+        setYear(newSong.year);
+        setArtist(newSong.artist);
+        lyrics = await getSongLyrics(newSong.name, newSong.artist);
+      }
+      // Only select the first two lines of the lyrics and add ellipsis at the end
+      const firstTwoLines = lyrics.split('\n').slice(0, 6).join('\n') + '...';
+      
+      setLyrics(firstTwoLines);
+    };
+    fetchLyrics();
     setGenre(song.genre);
     setYear(song.year);
     setArtist(song.artist);
   }, [])
+
+
 
   const handleSongNameChange = (e) => {
     setSongName(e.target.value)

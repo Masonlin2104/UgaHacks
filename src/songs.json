@@ -15,7 +15,7 @@
     },
     {
       "name": "Uptown Funk",
-      "artist": "Mark Ronson ft. Bruno Mars",
+      "artist": "Mark Ronson",
       "year": 2014,
       "genre": "Funk/Pop",
       "lyrics": "Don't believe me, just watch!"
@@ -92,28 +92,28 @@
     },
     {
       "name": "Somebody That I Used to Know",
-      "artist": "Gotye ft. Kimbra",
+      "artist": "Gotye",
       "year": 2011,
       "genre": "Alternative/Indie",
       "lyrics": "Now you're just somebody that I used to know..."
     },
     {
       "name": "We Found Love",
-      "artist": "Rihanna ft. Calvin Harris",
+      "artist": "Rihanna",
       "year": 2011,
       "genre": "Pop/Dance",
       "lyrics": "We found love in a hopeless place..."
     },
     {
       "name": "Hips Don't Lie",
-      "artist": "Shakira ft. Wyclef Jean",
+      "artist": "Shakira",
       "year": 2006,
       "genre": "Latin Pop",
       "lyrics": "I'm on tonight, you know my hips don't lie..."
     },
     {
       "name": "Crazy in Love",
-      "artist": "Beyoncé ft. Jay-Z",
+      "artist": "Beyoncé",
       "year": 2003,
       "genre": "R&B/Pop",
       "lyrics": "Got me looking so crazy right now..."
@@ -169,7 +169,7 @@
     },
     {
       "name": "We Are Young",
-      "artist": "Fun. ft. Janelle Monáe",
+      "artist": "Fun.",
       "year": 2011,
       "genre": "Indie Pop",
       "lyrics": "Tonight, we are young, so let's set the world on fire..."
@@ -201,13 +201,7 @@
       "year": 2019,
       "genre": "Pop/Hip-Hop",
       "lyrics": "Why men great 'til they gotta be great?"
-    },
-    {
-      "name": "Shallow",
-      "artist": "Lady Gaga & Bradley Cooper",
-      "year": 2018,
-      "genre": "Pop",
-      "lyrics": "I'm off the deep end, watch as I dive in..."
     }
+    
   ]
   
