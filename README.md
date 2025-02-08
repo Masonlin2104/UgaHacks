@@ -11,3 +11,6 @@ npm run dev
 ```
 
 Created by Lera Legostaev, Mason Gindlesperger, Mason Lin
+
+Credits:
+    Api: https://lyricsovh.docs.apiary.io/# --Used to grab song lyrics based on song name, artist
