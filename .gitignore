@@ -7,6 +7,9 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Ignore the .env file to keep sensitive data private
+.env
+
 node_modules
 dist
 dist-ssr
