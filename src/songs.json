@@ -12,5 +12,61 @@
     "year": 2017,
     "genre": "Pop",
     "lyrics": "The club isn't the best place to find a lover..."
+  },
+  {
+    "name": "Hotel California",
+    "artist": "Eagles",
+    "year": 1976,
+    "genre": "Rock",
+    "lyrics": "On a dark desert highway, cool wind in my hair..."
+  },
+  {
+    "name": "Billie Jean",
+    "artist": "Michael Jackson",
+    "year": 1982,
+    "genre": "Pop",
+    "lyrics": "She was more like a beauty queen from a movie scene..."
+  },
+  {
+    "name": "Smells Like Teen Spirit",
+    "artist": "Nirvana",
+    "year": 1991,
+    "genre": "Grunge",
+    "lyrics": "Load up on guns, bring your friends..."
+  },
+  {
+    "name": "Rolling in the Deep",
+    "artist": "Adele",
+    "year": 2010,
+    "genre": "Soul",
+    "lyrics": "There's a fire starting in my heart..."
+  },
+  {
+    "name": "Hey Jude",
+    "artist": "The Beatles",
+    "year": 1968,
+    "genre": "Rock",
+    "lyrics": "Hey Jude, don't make it bad. Take a sad song and make it better..."
+  },
+  {
+    "name": "Someone Like You",
+    "artist": "Adele",
+    "year": 2011,
+    "genre": "Pop",
+    "lyrics": "I heard that you're settled down, that you found a girl and you're married now..."
+  },
+  {
+    "name": "Uptown Funk",
+    "artist": "Mark Ronson ft. Bruno Mars",
+    "year": 2014,
+    "genre": "Funk",
+    "lyrics": "This hit, that ice cold, Michelle Pfeiffer, that white gold..."
+  },
+  {
+    "name": "Wonderwall",
+    "artist": "Oasis",
+    "year": 1995,
+    "genre": "Alternative Rock",
+    "lyrics": "Today is gonna be the day that they're gonna throw it back to you..."
   }
 ]
