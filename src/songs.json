@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Bohemian Rhapsody",
+    "artist": "Queen",
+    "year": 1975,
+    "genre": "Rock",
+    "lyrics": "Is this the real life? Is this just fantasy?..."
+  },
+  {
+    "name": "Shape of You",
+    "artist": "Ed Sheeran",
+    "year": 2017,
+    "genre": "Pop",
+    "lyrics": "The club isn't the best place to find a lover..."
+  }
+]

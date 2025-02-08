@@ -1,8 +1,13 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import musicNote from './assets/musicnote.svg'
 import './App.css'
+import songs from './songs.json'
+
+const getRandomSong = () => {
+  return songs[Math.floor(Math.random() * songs.length)];
+};
 
 function App() {
   const [count, setCount] = useState(0)
@@ -10,6 +15,21 @@ function App() {
   const [genre, setGenre] = useState('Genre')
   const [year, setYear] = useState('Year')
   const [artist, setArtist] = useState('Artist')
+  const [songName, setSongName] = useState('')
+
+  useEffect(() => {
+    const song = getRandomSong();
+    setLyrics(song.lyrics);
+    setGenre(song.genre);
+    setYear(song.year);
+    setArtist(song.artist);
+  }, [])
+
+  const handleSongNameChange = (e) => {
+    setSongName(e.target.value)
+    const song = songs.find(song => song.name.toLowerCase() === e.target.value.toLowerCase());
+    setArtist(song ? song.artist : 'Artist not found');
+  }
 
   return (
     <>
@@ -39,7 +59,7 @@ function App() {
         <form>
           <label>
             Guess the Song: 
-            <input type="text" name="name" />
+            <input type="text" name="name" value={songName} onChange={handleSongNameChange} />
           </label>
         </form>
         <p>
