@@ -74,6 +74,12 @@ h2 {
   color: #963A2F;
 }
 
+.input-form input {
+  color: black;
+  background-color: white;
+ 
+}
+
 input {
   background-color: #FFFFFF;
 }

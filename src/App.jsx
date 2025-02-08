@@ -18,6 +18,7 @@ function App() {
   const [songName, setSongName] = useState('')
   const [message, setMessage] = useState('')
   const [currentSong, setCurrentSong] = useState(null)
+  const [incorrectGuesses, setIncorrectGuesses] = useState(0)
 
   useEffect(() => {
     const song = getRandomSong();
@@ -34,11 +35,16 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!songName.trim()) {
+      return;
+    }
     if (currentSong && songName.toLowerCase() === currentSong.name.toLowerCase()) {
       setMessage('Congratulations! You guessed the song correctly.');
     } else {
       setMessage('Incorrect. Try again.');
+      setIncorrectGuesses(incorrectGuesses + 1);
     }
+    setSongName('');
   }
 
   return (
@@ -55,15 +61,15 @@ function App() {
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div className="category-card">
             <h2>Genre:</h2>
-            <p>{genre}</p>
+            <p>{incorrectGuesses >= 1 ? genre : '???'}</p>
           </div>
           <div className="category-card">
             <h2>Year:</h2>
-            <p>{year}</p>
+            <p>{incorrectGuesses >= 2 ? year : '???'}</p>
           </div>
           <div className="category-card">
             <h2>Artist:</h2>
-            <p>{artist}</p>
+            <p>{incorrectGuesses >= 3 ? artist : '???'}</p>
           </div>
         </div>
         <form className="input-form" onSubmit={handleSubmit}>
