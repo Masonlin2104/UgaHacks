@@ -8,6 +8,8 @@ git clone https://github.com/Masonlin2104/UgaHacks.git
 
 cd UgaHacks
 
+npm install
+
 npm run dev
 ```
 
